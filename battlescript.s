@@ -29,3 +29,24 @@
 .macro bs_return
 	.byte 0x3c
 .endmacro
+
+.macro bs_call, address
+	.byte 0x41
+	.word address
+.endmacro
+
+.macro bs_orword, pointer, value
+	.byte 0x35
+	.word pointer
+	.word value
+.endmacro
+
+.macro bs_healthbarupdate, bank
+	.byte 0x0b
+	.byte bank
+.endmacro
+
+.macro bs_datahpupdate, bank
+	.byte 0x0c
+	.byte bank
+.endmacro

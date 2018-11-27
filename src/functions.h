@@ -2,8 +2,9 @@
 #include "types.h"
 
 // // bool do_itemeffect(struct pokemon* pokemon, u16 item, u8 partyid, u8 attackid);
-// // u8 itemid_get_heldeffect(u16 item);
+u8 itemid_get_heldeffect(u16 item);
 u8 itemid_get_pocket_number(u16 item);
+u8 itemid_get_quality(u16 itemid);
 
 // // u32 pokemon_getattr(struct pokemon*, u8, void*);
 // void pokemon_setattr(struct pokemon*, u8, void*);

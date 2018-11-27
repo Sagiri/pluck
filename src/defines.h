@@ -8,9 +8,11 @@
 #include "defines/pockets.h"
 // #include "defines/pokemon_attributes.h"
 #include "defines/abilities.h"
+#include "defines/hold_effects.h"
 
 #include "structs.h"
 #include "locations.h"
 #include "functions.h"
 
 // #define battle_side_get_party_owner(bank) (battle_side_get_owner(bank) ? party_opponent : party_player)
+#define min(x, y) ((x < y) ? x : y)

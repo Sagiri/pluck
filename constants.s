@@ -10,8 +10,8 @@ EFFECT_PAYDAY equ 0xB
 // .definelabel battle_strings, 0x08A00000
 // PLUCK_BATTLE_STRINGID equ 374
 
-// .definelabel party_player, 0x02024284
-// .definelabel party_opponent, 0x0202402C
+.definelabel party_player, 0x02024284
+.definelabel party_opponent, 0x0202402C
 
 .definelabel battle_data, 0x02023BE4
 
@@ -32,6 +32,8 @@ EFFECT_PAYDAY equ 0xB
 .definelabel ability_immunity_script, 0x081D948E
 .definelabel b_dp08_ptr, 0x02023FE8
 // .definelabel knockoff_move_removeitem_script, 0x081D8F86
+// .definelabel helditem_restorehp_script, 0x081D95EF
+.definelabel b_move_damage, 0x02023D50
 
 .definelabel extra_battle_string, 0x0203C020
 EXTRA_BATTLE_STRINGID equ 0x184

@@ -10,6 +10,8 @@ extern u8 pXateYsZ[];
 extern u8 pluck_move_eat_script[];
 extern u8 ability_immunity_script[];
 // extern u8 knockoff_move_removeitem_script[];
+// extern u8 helditem_restorehp_script[];
+extern u8 pluck_heal_hp_script[];
 
 extern u8* extra_battle_string;
 
@@ -24,3 +26,4 @@ extern u8* b_movescr_cursor;
 extern u16 b_2023D68_held_item;
 extern u8 b_last_copied_ability;
 extern struct dp08* b_dp08_ptr;
+extern i32 b_move_damage;

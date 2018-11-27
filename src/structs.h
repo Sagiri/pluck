@@ -30,7 +30,7 @@ struct battle_datum {
     /*0x28*/ u16 hp;
     /*0x2A*/ u8 level;
     /*0x2B*/ u8 friendship;
-    /*0x2C*/ u16 maxHP;
+    /*0x2C*/ u16 max_hp;
     /*0x2E*/ u16 item;
     /*0x30*/ u8 nickname[POKEMON_NAME_LENGTH + 1];
     /*0x3B*/ u8 ppBonuses;

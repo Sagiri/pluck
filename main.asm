@@ -55,6 +55,16 @@
             bs_waitmessage 0x40
             bs_return
 
+        pluck_heal_hp_script:
+            bs_call pluck_move_eat_script
+            bs_playanimation 0x1, 0x7, 0x0
+            bs_printstring 0x12A
+            bs_waitmessage 0x40
+            bs_orword 0x2023DD0, 0x100
+            bs_healthbarupdate 0x1
+            bs_datahpupdate 0x1
+            bs_return
+
         pXateYsZ: .string "\v\h0F ate\n\v\h10's \v\h16!"
     .thumb
 .endarea

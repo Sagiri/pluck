@@ -43,6 +43,8 @@
 
     .pool
 
+    .include "__gnu_thumb1_case_uqi.asm"
+
     // have to be in ARM mode for C code to directly access it
     .arm
         pluck_move_script:
@@ -63,6 +65,21 @@
             bs_orword 0x2023DD0, 0x100
             bs_healthbarupdate 0x1
             bs_datahpupdate 0x1
+            bs_return
+
+        pluck_parlyz_heal_script:
+            bs_call pluck_move_eat_script
+            bs_call 0x081D9537
+            bs_return
+
+        pluck_poison_heal_script:
+            bs_call pluck_move_eat_script
+            bs_call 0x081D954F
+            bs_return
+
+        pluck_burn_heal_script:
+            bs_call pluck_move_eat_script
+            bs_call 0x081D9567
             bs_return
 
         pXateYsZ: .string "\v\h0F ate\n\v\h10's \v\h16!"

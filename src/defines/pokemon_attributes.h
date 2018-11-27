@@ -6,3 +6,6 @@
 #define REQ_HELDITEM        12
 #define REQ_LEVEL           56
 #define REQ_SPECIES         65
+
+#define REQ_BTL_HELDITEM    2
+#define REQ_BTL_STATUS      40

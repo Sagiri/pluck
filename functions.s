@@ -23,3 +23,4 @@
 // .definelabel effect_complete, 0x0802110A
 
 .definelabel itemid_get_quality, 0x0809A948
+.definelabel b_call_bc_move_exec, 0x0801BBE4

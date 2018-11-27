@@ -21,3 +21,4 @@ void dp01_battle_side_mark_buffer_for_execution(u8 bank);
 void b_movescr_stack_push(u8* cursor);
 void dp01_build_cmdbuf_x02_a_b_varargs(u8 a1, u8 a2, u8 a3, u8 a4, void* a5);
 void b_history__record_ability_usage_of_player(u8 bank, u8 ability);
+void b_call_bc_move_exec(u8* cursor);

@@ -6,9 +6,10 @@
 
 #include "defines/items.h"
 #include "defines/pockets.h"
-// #include "defines/pokemon_attributes.h"
+#include "defines/pokemon_attributes.h"
 #include "defines/abilities.h"
 #include "defines/hold_effects.h"
+#include "defines/status_constants.h"
 
 #include "structs.h"
 #include "locations.h"

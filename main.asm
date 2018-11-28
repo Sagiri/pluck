@@ -43,8 +43,6 @@
 
     .pool
 
-    .include "__gnu_thumb1_case_uqi.asm"
-
     // have to be in ARM mode for C code to directly access it
     .arm
         pluck_move_script:

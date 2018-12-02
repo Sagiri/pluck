@@ -12,11 +12,11 @@ extern u8 ability_immunity_script[];
 // extern u8 knockoff_move_removeitem_script[];
 // extern u8 helditem_restorehp_script[];
 extern u8 pluck_heal_hp_script[];
-extern u8 pluck_parlyz_heal_script[];
-extern u8 pluck_poison_heal_script[];
-extern u8 pluck_burn_heal_script[];
-extern u8 pluck_sleep_heal_script[];
-extern u8 pluck_confusion_heal_script[];
+extern u8 parlyz_heal_script[];
+extern u8 poison_heal_script[];
+extern u8 burn_heal_script[];
+extern u8 sleep_heal_script[];
+extern u8 confusion_heal_script[];
 
 extern u8* extra_battle_string;
 

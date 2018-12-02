@@ -6,7 +6,7 @@ u8* pluck_restore_hp(struct battle_datum* attacker, u8 quality) {
         b_move_damage = attacker->hp - final_hp;
         return pluck_heal_hp_script;
     } else {
-        return pluck_move_eat_script;
+        return NULL;
     }
 }
 
@@ -26,7 +26,7 @@ u8* pluck_heal_status(u32* status, u32 mask, u8* sucess_script) {
 
         return sucess_script;
     } else {
-        return pluck_move_eat_script;
+        return NULL;
     }
 }
 
@@ -71,15 +71,15 @@ void pluck() {
                 break;
 
             case HOLD_EFFECT_CURE_PAR:
-                script = pluck_heal_status(&attacker->status1, STATUS1_PARALYSIS, pluck_parlyz_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_PARALYSIS, parlyz_heal_script);
                 break;
 
             case HOLD_EFFECT_CURE_PSN:
-                script = pluck_heal_status(&attacker->status1, STATUS1_PSN_ANY, pluck_poison_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_PSN_ANY, poison_heal_script);
                 break;
 
             case HOLD_EFFECT_CURE_BRN:
-                script = pluck_heal_status(&attacker->status1, STATUS1_BURN, pluck_burn_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_BURN, burn_heal_script);
                 break;
 
             case HOLD_EFFECT_CURE_SLP:
@@ -95,20 +95,25 @@ void pluck() {
                 );
                 dp01_battle_side_mark_buffer_for_execution(b_attacker);
 
-                script = pluck_heal_status(&attacker->status1, STATUS1_SLEEP, pluck_sleep_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_SLEEP, sleep_heal_script);
                 break;
 
             case HOLD_EFFECT_CURE_CONFUSION:
-                script = pluck_heal_status(&attacker->status2, STATUS2_CONFUSION, pluck_confusion_heal_script);
+                script = pluck_heal_status(&attacker->status2, STATUS2_CONFUSION, confusion_heal_script);
                 break;
 
             default:
-                script = pluck_move_eat_script;
+                script = NULL;
                 break;
         }
 
-        b_movescr_stack_push(b_movescr_cursor +1);
-        b_movescr_cursor = script;
+        if (script != NULL) {
+            b_movescr_stack_push(b_movescr_cursor +1);
+            b_movescr_cursor = script;
+        }
+
+        b_movescr_stack_push(b_movescr_cursor);
+        b_movescr_cursor = pluck_move_eat_script;
 
         // *(u8*)((u8*)(&b_dp08_ptr->choicedMove[b_defender]) + 0) = 0;
         // *(u8*)((u8*)(&b_dp08_ptr->choicedMove[b_defender]) + 1) = 0;

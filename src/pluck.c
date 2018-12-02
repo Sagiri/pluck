@@ -10,17 +10,17 @@ u8* pluck_restore_hp(struct battle_datum* attacker, u8 quality) {
     }
 }
 
-u8* pluck_heal_status(struct battle_datum* attacker, u32 mask, u8* sucess_script) {
-    if (attacker->status1 & mask) {
-        attacker->status1 &= ~mask;
+u8* pluck_heal_status(u32* status, u32 mask, u8* sucess_script) {
+    if (*status & mask) {
+        *status &= ~mask;
 
         b_active_side = b_attacker;
         dp01_build_cmdbuf_x02_a_b_varargs(
             0,
             REQ_BTL_STATUS,
             0,
-            sizeof(attacker->status1),
-            &attacker->status1
+            sizeof(*status),
+            status
         );
         dp01_battle_side_mark_buffer_for_execution(b_attacker);
 
@@ -71,15 +71,15 @@ void pluck() {
                 break;
 
             case HOLD_EFFECT_CURE_PAR:
-                script = pluck_heal_status(attacker, STATUS1_PARALYSIS, pluck_parlyz_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_PARALYSIS, pluck_parlyz_heal_script);
                 break;
 
             case HOLD_EFFECT_CURE_PSN:
-                script = pluck_heal_status(attacker, STATUS1_PSN_ANY, pluck_poison_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_PSN_ANY, pluck_poison_heal_script);
                 break;
 
             case HOLD_EFFECT_CURE_BRN:
-                script = pluck_heal_status(attacker, STATUS1_BURN, pluck_burn_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_BURN, pluck_burn_heal_script);
                 break;
 
             case HOLD_EFFECT_CURE_SLP:
@@ -95,7 +95,11 @@ void pluck() {
                 );
                 dp01_battle_side_mark_buffer_for_execution(b_attacker);
 
-                script = pluck_heal_status(attacker, STATUS1_SLEEP, pluck_sleep_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_SLEEP, pluck_sleep_heal_script);
+                break;
+
+            case HOLD_EFFECT_CURE_CONFUSION:
+                script = pluck_heal_status(&attacker->status2, STATUS2_CONFUSION, pluck_confusion_heal_script);
                 break;
 
             default:

@@ -16,6 +16,7 @@ extern u8 pluck_parlyz_heal_script[];
 extern u8 pluck_poison_heal_script[];
 extern u8 pluck_burn_heal_script[];
 extern u8 pluck_sleep_heal_script[];
+extern u8 pluck_confusion_heal_script[];
 
 extern u8* extra_battle_string;
 

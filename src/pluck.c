@@ -10,19 +10,21 @@ u8* pluck_restore_hp(struct battle_datum* attacker, u8 quality) {
     }
 }
 
-u8* pluck_heal_status(u32* status, u32 mask, u8* sucess_script) {
+u8* pluck_heal_status(u32* status, u32 mask, u8* sucess_script, bool upload) {
     if (*status & mask) {
         *status &= ~mask;
 
-        b_active_side = b_attacker;
-        dp01_build_cmdbuf_x02_a_b_varargs(
-            0,
-            REQ_BTL_STATUS,
-            0,
-            sizeof(*status),
-            status
-        );
-        dp01_battle_side_mark_buffer_for_execution(b_attacker);
+        if (upload) {
+            b_active_side = b_attacker;
+            dp01_build_cmdbuf_x02_a_b_varargs(
+                0,
+                REQ_BTL_STATUS,
+                0,
+                sizeof(*status),
+                status
+            );
+            dp01_battle_side_mark_buffer_for_execution(b_attacker);
+        }
 
         return sucess_script;
     } else {
@@ -71,35 +73,24 @@ void pluck() {
                 break;
 
             case HOLD_EFFECT_CURE_PAR:
-                script = pluck_heal_status(&attacker->status1, STATUS1_PARALYSIS, parlyz_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_PARALYSIS, parlyz_heal_script, true);
                 break;
 
             case HOLD_EFFECT_CURE_PSN:
-                script = pluck_heal_status(&attacker->status1, STATUS1_PSN_ANY, poison_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_PSN_ANY, poison_heal_script, true);
                 break;
 
             case HOLD_EFFECT_CURE_BRN:
-                script = pluck_heal_status(&attacker->status1, STATUS1_BURN, burn_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_BURN, burn_heal_script, true);
                 break;
 
             case HOLD_EFFECT_CURE_SLP:
                 attacker->status2 &= ~STATUS2_NIGHTMARE;
-
-                b_active_side = b_attacker;
-                dp01_build_cmdbuf_x02_a_b_varargs(
-                    0,
-                    REQ_BTL_STATUS,
-                    0,
-                    sizeof(attacker->status2),
-                    &attacker->status2
-                );
-                dp01_battle_side_mark_buffer_for_execution(b_attacker);
-
-                script = pluck_heal_status(&attacker->status1, STATUS1_SLEEP, sleep_heal_script);
+                script = pluck_heal_status(&attacker->status1, STATUS1_SLEEP, sleep_heal_script, true);
                 break;
 
             case HOLD_EFFECT_CURE_CONFUSION:
-                script = pluck_heal_status(&attacker->status2, STATUS2_CONFUSION, confusion_heal_script);
+                script = pluck_heal_status(&attacker->status2, STATUS2_CONFUSION, confusion_heal_script, false);
                 break;
 
             default:

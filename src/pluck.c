@@ -82,6 +82,22 @@ void pluck() {
                 script = pluck_heal_status(attacker, STATUS1_BURN, pluck_burn_heal_script);
                 break;
 
+            case HOLD_EFFECT_CURE_SLP:
+                attacker->status2 &= ~STATUS2_NIGHTMARE;
+
+                b_active_side = b_attacker;
+                dp01_build_cmdbuf_x02_a_b_varargs(
+                    0,
+                    REQ_BTL_STATUS,
+                    0,
+                    sizeof(attacker->status2),
+                    &attacker->status2
+                );
+                dp01_battle_side_mark_buffer_for_execution(b_attacker);
+
+                script = pluck_heal_status(attacker, STATUS1_SLEEP, pluck_sleep_heal_script);
+                break;
+
             default:
                 script = pluck_move_eat_script;
                 break;

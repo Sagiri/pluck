@@ -80,6 +80,11 @@
             bs_call 0x081D9567
             bs_return
 
+        pluck_sleep_heal_script:
+            bs_call pluck_move_eat_script
+            bs_call 0x081D9597
+            bs_return
+
         pXateYsZ: .string "\v\h0F ate\n\v\h10's \v\h16!"
     .thumb
 .endarea

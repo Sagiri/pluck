@@ -14,7 +14,7 @@
 .org allocation
 
 .area allocation_size
-    .importobj "build/src/relocatable.o"
+    .importobj "obj/relocatable.o"
 
     .align 2
 

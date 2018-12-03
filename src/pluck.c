@@ -1,16 +1,16 @@
 #include "defines.h"
 
-u8* pluck_restore_hp(struct battle_datum* attacker, u8 quality) {
+void pluck_restore_hp(struct battle_datum* attacker, u8 quality) {
     if (attacker->hp < attacker->max_hp) {
         u16 final_hp = min(attacker->max_hp, attacker->hp + quality);
         b_move_damage = attacker->hp - final_hp;
-        return pluck_heal_hp_script;
-    } else {
-        return NULL;
+
+        b_movescr_stack_push(b_movescr_cursor);
+        b_movescr_cursor = pluck_heal_hp_script;
     }
 }
 
-u8* pluck_heal_status(u32* status, u32 mask, u8* sucess_script, bool upload) {
+void pluck_heal_status(u32* status, u32 mask, u8* sucess_script, bool upload) {
     if (*status & mask) {
         *status &= ~mask;
 
@@ -26,9 +26,8 @@ u8* pluck_heal_status(u32* status, u32 mask, u8* sucess_script, bool upload) {
             dp01_battle_side_mark_buffer_for_execution(b_attacker);
         }
 
-        return sucess_script;
-    } else {
-        return NULL;
+        b_movescr_stack_push(b_movescr_cursor);
+        b_movescr_cursor = sucess_script;
     }
 }
 
@@ -65,42 +64,31 @@ void pluck() {
         u8 effect = itemid_get_heldeffect(berry);
         u8 quality = itemid_get_quality(berry);
 
-        u8* script;
-
         switch(effect) {
             case HOLD_EFFECT_RESTORE_HP:
-                script = pluck_restore_hp(attacker, quality);
+                pluck_restore_hp(attacker, quality);
                 break;
 
             case HOLD_EFFECT_CURE_PAR:
-                script = pluck_heal_status(&attacker->status1, STATUS1_PARALYSIS, parlyz_heal_script, true);
+                pluck_heal_status(&attacker->status1, STATUS1_PARALYSIS, parlyz_heal_script, true);
                 break;
 
             case HOLD_EFFECT_CURE_PSN:
-                script = pluck_heal_status(&attacker->status1, STATUS1_PSN_ANY, poison_heal_script, true);
+                pluck_heal_status(&attacker->status1, STATUS1_PSN_ANY, poison_heal_script, true);
                 break;
 
             case HOLD_EFFECT_CURE_BRN:
-                script = pluck_heal_status(&attacker->status1, STATUS1_BURN, burn_heal_script, true);
+                pluck_heal_status(&attacker->status1, STATUS1_BURN, burn_heal_script, true);
                 break;
 
             case HOLD_EFFECT_CURE_SLP:
                 attacker->status2 &= ~STATUS2_NIGHTMARE;
-                script = pluck_heal_status(&attacker->status1, STATUS1_SLEEP, sleep_heal_script, true);
+                pluck_heal_status(&attacker->status1, STATUS1_SLEEP, sleep_heal_script, true);
                 break;
 
             case HOLD_EFFECT_CURE_CONFUSION:
-                script = pluck_heal_status(&attacker->status2, STATUS2_CONFUSION, confusion_heal_script, false);
+                pluck_heal_status(&attacker->status2, STATUS2_CONFUSION, confusion_heal_script, false);
                 break;
-
-            default:
-                script = NULL;
-                break;
-        }
-
-        if (script != NULL) {
-            b_movescr_stack_push(b_movescr_cursor +1);
-            b_movescr_cursor = script;
         }
 
         b_movescr_stack_push(b_movescr_cursor);

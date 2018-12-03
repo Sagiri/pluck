@@ -15,6 +15,7 @@ extern u8 pluck_heal_hp_script[];
 extern u8 parlyz_heal_script[];
 extern u8 poison_heal_script[];
 extern u8 burn_heal_script[];
+extern u8 freeze_heal_script[];
 extern u8 sleep_heal_script[];
 extern u8 confusion_heal_script[];
 extern u8 freeze_heal_script[];

@@ -173,6 +173,10 @@ void pluck() {
                 pluck_heal_status(&attacker->status1, STATUS1_BURN, burn_heal_script, true);
                 break;
 
+            case HOLD_EFFECT_CURE_FRZ:
+                pluck_heal_status(&attacker->status1, STATUS1_FREEZE, freeze_heal_script, true);
+                break;
+
             case HOLD_EFFECT_CURE_SLP:
                 attacker->status2 &= ~STATUS2_NIGHTMARE;
                 pluck_heal_status(&attacker->status1, STATUS1_SLEEP, sleep_heal_script, true);

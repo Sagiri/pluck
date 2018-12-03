@@ -10,6 +10,8 @@
 .definelabel itemid_get_quality, 0x0809A948
 .definelabel b_call_bc_move_exec, 0x0801BBE4
 
+.definelabel strcpy_xFF_terminated, 0x08008D84
+
 // .definelabel do_itemeffect, 0x080413C0
 // .definelabel pokemon_getattr, 0x0803FBE8
 // .definelabel pokemon_setattr, 0x0804037C

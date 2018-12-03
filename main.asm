@@ -98,6 +98,11 @@
             bs_printstring 0x128
             bs_goto heal_status_script
 
+        all_heal_script:
+            bs_playanimation 0xA, 0x7, 0x0
+            bs_printfromtable 0x083FE634
+            bs_goto heal_status_script
+
         pXateYsZ: .string "\v\h0F ate\n\v\h10's \v\h16!"
     .thumb
 .endarea

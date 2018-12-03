@@ -41,3 +41,11 @@ EXTRA_BATTLE_STRINGID equ 0x184
 // .definelabel burn_heal_script, 0x081D9567
 // .definelabel sleep_heal_script, 0x081D9597
 // .definelabel confusion_heal_script, 0x081D95AF
+
+.definelabel battle_outcome_A, 0x02022AB8
+.definelabel bo_paralysis, 0x082500A4
+.definelabel bo_poison, 0x08250094
+.definelabel bo_burn, 0x082500AC
+.definelabel bo_sleep, 0x0825009C
+.definelabel bo_confusion, 0x082500BC
+.definelabel bo_ice, 0x082500B4

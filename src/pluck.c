@@ -31,6 +31,54 @@ void pluck_heal_status(u32* status, u32 mask, u8* sucess_script, bool upload) {
     }
 }
 
+void pluck_heal_all(struct battle_datum* attacker) {
+    u8* bo_status;
+    bool run_script = false;
+
+    // the lack of else is very much intentional
+    if (attacker->status1 && STATUS1_ANY) {
+        if (attacker->status1 && STATUS1_PARALYSIS) {
+            attacker->status1 &= ~STATUS1_PARALYSIS;
+            bo_status = bo_paralysis;
+
+        } if (attacker->status1 && STATUS1_PSN_ANY) {
+            attacker->status1 &= ~STATUS1_PSN_ANY;
+            bo_status = bo_poison;
+
+        } if (attacker->status1 && STATUS1_BURN) {
+            attacker->status1 &= ~STATUS1_BURN;
+            bo_status = bo_burn;
+
+        } if (attacker->status1 && STATUS1_SLEEP) {
+            attacker->status2 &= ~STATUS2_NIGHTMARE;
+            attacker->status1 &= ~STATUS1_SLEEP;
+            bo_status = bo_sleep;
+        }
+
+        b_active_side = b_attacker;
+        dp01_build_cmdbuf_x02_a_b_varargs(
+            0,
+            REQ_BTL_STATUS,
+            0,
+            sizeof(attacker->status1),
+            &attacker->status1
+        );
+        dp01_battle_side_mark_buffer_for_execution(b_attacker);
+
+        run_script = true;
+
+    } if (attacker->status2 && STATUS2_CONFUSION) {
+        attacker->status2 &= ~STATUS2_CONFUSION;
+        bo_status = bo_confusion;
+        run_script = true;
+
+    } if (run_script) {
+        strcpy_xFF_terminated(battle_outcome_A, bo_status);
+        b_movescr_stack_push(b_movescr_cursor);
+        b_movescr_cursor = all_heal_script;
+    }
+}
+
 void pluck() {
     struct battle_datum* defender = &battle_data[b_defender];
     struct battle_datum* attacker = &battle_data[b_attacker];
@@ -88,6 +136,10 @@ void pluck() {
 
             case HOLD_EFFECT_CURE_CONFUSION:
                 pluck_heal_status(&attacker->status2, STATUS2_CONFUSION, confusion_heal_script, false);
+                break;
+
+            case HOLD_EFFECT_CURE_ALL:
+                pluck_heal_all(attacker);
                 break;
         }
 

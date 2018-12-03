@@ -17,6 +17,8 @@ extern u8 poison_heal_script[];
 extern u8 burn_heal_script[];
 extern u8 sleep_heal_script[];
 extern u8 confusion_heal_script[];
+extern u8 freeze_heal_script[];
+extern u8 all_heal_script[];
 
 extern u8* extra_battle_string;
 
@@ -32,3 +34,11 @@ extern u16 b_2023D68_held_item;
 extern u8 b_last_copied_ability;
 extern struct dp08* b_dp08_ptr;
 extern i32 b_move_damage;
+
+extern u8 battle_outcome_A[];
+extern u8 bo_paralysis[];
+extern u8 bo_poison[];
+extern u8 bo_burn[];
+extern u8 bo_sleep[];
+extern u8 bo_confusion[];
+extern u8 bo_ice[];

@@ -55,3 +55,8 @@
 	.byte 0x98
 	.byte battler
 .endmacro
+
+.macro bs_printfromtable, ptr
+	.byte 0x13
+	.word ptr
+.endmacro

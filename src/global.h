@@ -1,6 +1,8 @@
 #pragma once
 #include "types.h"
 
+// #define UPDATED_SITRUSBERRY_EFFECT
+
 #define POKEMON_NAME_LENGTH 10
 #define BATTLE_STATS_NO 8
 

@@ -158,7 +158,12 @@ void pluck() {
 
         switch(effect) {
             case HOLD_EFFECT_RESTORE_HP:
-                pluck_restore_hp(attacker, quality);
+                #ifdef UPDATED_SITRUSBERRY_EFFECT
+                if (berry == ITEM_SITRUSBERRY)
+                    pluck_restore_hp(attacker, attacker->max_hp >> 2);
+                else
+                #endif
+                    pluck_restore_hp(attacker, quality);
                 break;
 
             case HOLD_EFFECT_CURE_PAR:

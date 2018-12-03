@@ -60,3 +60,7 @@
 	.byte 0x13
 	.word ptr
 .endmacro
+
+.macro bs_seteffectprimary
+	.byte 0x16
+.endmacro

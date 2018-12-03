@@ -26,3 +26,19 @@
 // .definelabel script_sel_hook_return, 0x08020E48
 
 // .definelabel effect_complete, 0x0802110A
+
+.definelabel __divsi3, 0x081E4018
+.definelabel __aeabi_idiv, __divsi3
+.definelabel div, __divsi3
+
+.definelabel __modsi3, 0x081E40F4
+.definelabel mod, __modsi3
+
+.definelabel __udivsi3, 0x081E460C
+.definelabel __aeabi_uidiv, __udivsi3
+.definelabel udiv, __udivsi3
+
+.definelabel __umodsi3, 0x081E4684
+.definelabel umod, __umodsi3
+
+.definelabel dislikes_flavor, 0x08044234

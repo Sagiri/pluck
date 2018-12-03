@@ -19,6 +19,7 @@ extern u8 sleep_heal_script[];
 extern u8 confusion_heal_script[];
 extern u8 freeze_heal_script[];
 extern u8 all_heal_script[];
+extern u8 too_flavorful_script[];
 
 extern u8* extra_battle_string;
 
@@ -42,3 +43,6 @@ extern u8 bo_burn[];
 extern u8 bo_sleep[];
 extern u8 bo_confusion[];
 extern u8 bo_ice[];
+
+extern u8 byte_2022AB9;
+extern i16 word_2022ABA;

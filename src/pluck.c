@@ -79,6 +79,20 @@ void pluck_heal_all(struct battle_datum* attacker) {
     }
 }
 
+void pluck_flavor_hp(struct battle_datum* attacker, u8 effect, u8 denominator) {
+    u8 flavor = effect - HOLD_EFFECT_SPICY_HP;
+
+    if (dislikes_flavor(attacker->personality, flavor)) {
+        battle_outcome_A[0] = 0xFD;
+        byte_2022AB9 = 8;
+        word_2022ABA = lookup_flavor_string(flavor);
+        b_movescr_stack_push(b_movescr_cursor);
+        b_movescr_cursor = too_flavorful_script;
+    }
+
+    pluck_restore_hp(attacker, attacker->max_hp / denominator);
+}
+
 void pluck() {
     struct battle_datum* defender = &battle_data[b_defender];
     struct battle_datum* attacker = &battle_data[b_attacker];
@@ -140,6 +154,14 @@ void pluck() {
 
             case HOLD_EFFECT_CURE_ALL:
                 pluck_heal_all(attacker);
+                break;
+
+            case HOLD_EFFECT_SPICY_HP:
+            case HOLD_EFFECT_DRY_HP:
+            case HOLD_EFFECT_SWEET_HP:
+            case HOLD_EFFECT_BITTER_HP:
+            case HOLD_EFFECT_SOUR_HP:
+                pluck_flavor_hp(attacker, effect, quality);
                 break;
         }
 

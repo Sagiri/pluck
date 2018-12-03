@@ -103,6 +103,12 @@
             bs_printfromtable 0x083FE634
             bs_goto heal_status_script
 
+        too_flavorful_script:
+            bs_printstring 0x144
+            bs_waitmessage 0x40
+            bs_setmoveeffect 0x47       // confuses user
+            bs_return
+
         pXateYsZ: .string "\v\h0F ate\n\v\h10's \v\h16!"
     .thumb
 .endarea

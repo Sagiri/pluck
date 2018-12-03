@@ -17,3 +17,5 @@
 
 // #define battle_side_get_party_owner(bank) (battle_side_get_owner(bank) ? party_opponent : party_player)
 #define min(x, y) ((x < y) ? x : y)
+
+#define lookup_flavor_string(flavor) (flavor - 256)

@@ -49,3 +49,6 @@ EXTRA_BATTLE_STRINGID equ 0x184
 .definelabel bo_sleep, 0x0825009C
 .definelabel bo_confusion, 0x082500BC
 .definelabel bo_ice, 0x082500B4
+
+.definelabel byte_2022AB9, 0x02022AB9
+.definelabel word_2022ABA, 0x02022ABA

@@ -24,3 +24,4 @@ void b_history__record_ability_usage_of_player(u8 bank, u8 ability);
 void b_call_bc_move_exec(u8* cursor);
 
 u8* strcpy_xFF_terminated(u8* dst, u8* src);
+bool dislikes_flavor(u32 personality, u8 flavor);

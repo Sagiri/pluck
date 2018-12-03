@@ -81,9 +81,7 @@ void pluck_heal_all(struct battle_datum* attacker) {
 
 void pluck_flavor_hp(struct battle_datum* attacker, u8 flavor, u8 denominator) {
     if (dislikes_flavor(attacker->personality, flavor)) {
-        battle_outcome_A[0] = 0xFD;
-        byte_2022AB9 = 8;
-        word_2022ABA = lookup_flavor_string(flavor);
+        PREPARE_FLAVOR_BUFFER(battle_outcome_A, flavor);
         b_movescr_stack_push(b_movescr_cursor);
         b_movescr_cursor = too_flavorful_script;
     }

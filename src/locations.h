@@ -43,6 +43,3 @@ extern u8 bo_burn[];
 extern u8 bo_sleep[];
 extern u8 bo_confusion[];
 extern u8 bo_ice[];
-
-extern u8 byte_2022AB9;
-extern i16 word_2022ABA;

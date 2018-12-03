@@ -18,4 +18,9 @@
 // #define battle_side_get_party_owner(bank) (battle_side_get_owner(bank) ? party_opponent : party_player)
 #define min(x, y) ((x < y) ? x : y)
 
-#define lookup_flavor_string(flavor) (flavor - 256)
+#define PREPARE_FLAVOR_BUFFER(textVar, flavorId) {                          \
+    textVar[0] = 0xFD;                                                      \
+    textVar[1] = 8;                                                         \
+    textVar[2] = flavorId;                                                  \
+    textVar[3] = 0xFF;                                                      \
+}

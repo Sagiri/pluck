@@ -116,6 +116,12 @@
             bs_call 0x081D6BD1
             bs_return
 
+        crit_rate_buff_script:
+            bs_playanimation 0x1, 0x7, 0x0
+            bs_printstring 0x146
+            bs_waitmessage 0x40
+            bs_return
+
         pXateYsZ: .string "\v\h0F ate\n\v\h10's \v\h16!"
     .thumb
 .endarea

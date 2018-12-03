@@ -21,6 +21,7 @@ extern u8 freeze_heal_script[];
 extern u8 all_heal_script[];
 extern u8 too_flavorful_script[];
 extern u8 stat_buff_script[];
+extern u8 crit_rate_buff_script[];
 
 extern u8* extra_battle_string;
 

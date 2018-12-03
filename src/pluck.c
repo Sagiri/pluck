@@ -205,6 +205,14 @@ void pluck() {
             case HOLD_EFFECT_RANDOM_STAT_UP:
                 pluck_boost_random_stat(b_attacker);
                 break;
+
+            case HOLD_EFFECT_CRITICAL_UP:
+                if (attacker->status2 && STATUS2_FOCUS_ENERGY) break;
+
+                attacker->status2 |= STATUS2_FOCUS_ENERGY;
+                b_movescr_stack_push(b_movescr_cursor);
+                b_movescr_cursor = crit_rate_buff_script;
+                break;
         }
 
         b_movescr_stack_push(b_movescr_cursor);

@@ -22,6 +22,7 @@ EFFECT_PAYDAY equ 0xB
 .definelabel ability_immunity_script, 0x081D948E
 .definelabel b_dp08_ptr, 0x02023FE8
 .definelabel b_move_damage, 0x02023D50
+.definelabel enigma_berries, 0x02023F54
 
 .definelabel extra_battle_string, 0x0203C020
 EXTRA_BATTLE_STRINGID equ 0x184

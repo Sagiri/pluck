@@ -42,11 +42,16 @@ struct battle_datum {
     /*0x54*/ u32 otId;
 };
 
-#define MAX_BATTLERS_COUNT  4
-#define PARTY_SIZE 6
-
 struct dp08 {
     u8 _[0xC8];
     u16 choicedMove[MAX_BATTLERS_COUNT];
     u8 __[0x130];
+};
+
+struct battle_enigma_berry {
+    /*0x00*/ u8 name[BERRY_NAME_LENGTH + 1];
+    /*0x07*/ u8 hold_effect;
+    /*0x08*/ u8 item_effect[BERRY_ITEM_EFFECT_COUNT];
+    /*0x1A*/ u8 quality;
+    /*0x1B*/ u8 _;
 };

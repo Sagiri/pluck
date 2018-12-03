@@ -5,6 +5,10 @@
 
 #define POKEMON_NAME_LENGTH 10
 #define BATTLE_STATS_NO 8
+#define MAX_BATTLERS_COUNT  4
+#define PARTY_SIZE 6
+#define BERRY_NAME_LENGTH 6
+#define BERRY_ITEM_EFFECT_COUNT 18
 
 #include "defines/items.h"
 #include "defines/pockets.h"

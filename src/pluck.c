@@ -1,4 +1,4 @@
-#include "defines.h"
+#include "global.h"
 
 void pluck_restore_hp(struct battle_datum* attacker, u8 quality) {
     if (attacker->hp < attacker->max_hp) {

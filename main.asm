@@ -50,7 +50,6 @@
             bs_goto hit_move_script
 
         pluck_move_eat_script:
-            // bs_playanimation 0x0, 0x10, 0x0
             bs_printstring EXTRA_BATTLE_STRINGID
             bs_waitmessage 0x40
             bs_return
@@ -63,6 +62,41 @@
             bs_healthbarupdate 0x1
             bs_datahpupdate 0x1
             bs_return
+
+        parlyz_heal_script:
+            bs_playanimation 0xA, 0x7, 0x0
+            bs_printstring 0x123
+            // intentional fallthrough
+
+        heal_status_script:
+            bs_waitmessage 0x40
+            bs_updatestatusicon 0xA
+            bs_return
+
+        poison_heal_script:
+            bs_playanimation 0xA, 0x7, 0x0
+            bs_printstring 0x124
+            bs_goto heal_status_script
+
+        burn_heal_script:
+            bs_playanimation 0xA, 0x7, 0x0
+            bs_printstring 0x125
+            bs_goto heal_status_script
+
+        freeze_heal_script:
+            bs_playanimation 0xA, 0x7, 0x0
+            bs_printstring 0x126
+            bs_goto heal_status_script
+
+        sleep_heal_script:
+            bs_playanimation 0xA, 0x7, 0x0
+            bs_printstring 0x127
+            bs_goto heal_status_script
+
+        confusion_heal_script:
+            bs_playanimation 0xA, 0x7, 0x0
+            bs_printstring 0x128
+            bs_goto heal_status_script
 
         pXateYsZ: .string "\v\h0F ate\n\v\h10's \v\h16!"
     .thumb

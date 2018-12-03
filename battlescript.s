@@ -50,3 +50,8 @@
 	.byte 0x0c
 	.byte bank
 .endmacro
+
+.macro bs_updatestatusicon, battler
+	.byte 0x98
+	.byte battler
+.endmacro

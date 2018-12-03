@@ -36,8 +36,8 @@ EXTRA_BATTLE_STRINGID equ 0x184
 // .definelabel thief_move_steal_script, 0x081D9271
 // .definelabel b_defender_partner, 0x02023D6E
 
-.definelabel parlyz_heal_script, 0x081D9537
-.definelabel poison_heal_script, 0x081D954F
-.definelabel burn_heal_script, 0x081D9567
-.definelabel sleep_heal_script, 0x081D9597
-.definelabel confusion_heal_script, 0x081D95AF
+// .definelabel parlyz_heal_script, 0x081D9537
+// .definelabel poison_heal_script, 0x081D954F
+// .definelabel burn_heal_script, 0x081D9567
+// .definelabel sleep_heal_script, 0x081D9597
+// .definelabel confusion_heal_script, 0x081D95AF

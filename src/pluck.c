@@ -153,16 +153,8 @@ void pluck() {
         );
         dp01_battle_side_mark_buffer_for_execution(b_defender);
 
-        u8 effect;
-        u8 quality;
-
-        if (berry != ITEM_ENIGMABERRY) {
-            effect = itemid_get_heldeffect(berry);
-            quality = itemid_get_quality(berry);
-        } else {
-            effect = enigma_berries[b_defender].hold_effect;
-            quality = enigma_berries[b_defender].quality;
-        }
+        u8 effect = itemid_get_heldeffect(berry);
+        u8 quality = itemid_get_quality(berry);
 
         switch(effect) {
             case HOLD_EFFECT_RESTORE_HP:

@@ -53,5 +53,3 @@ extern u8 stat_modification_spec;
 
 extern u8 byte_2023FD4;
 extern u8 byte_2023FD5;
-
-extern struct battle_enigma_berry enigma_berries[MAX_BATTLERS_COUNT];

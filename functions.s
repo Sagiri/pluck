@@ -42,3 +42,4 @@
 .definelabel umod, __umodsi3
 
 .definelabel dislikes_flavor, 0x08044234
+.definelabel rand, 0x08044EC8

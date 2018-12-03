@@ -20,12 +20,13 @@ extern u8 confusion_heal_script[];
 extern u8 freeze_heal_script[];
 extern u8 all_heal_script[];
 extern u8 too_flavorful_script[];
+extern u8 stat_buff_script[];
 
 extern u8* extra_battle_string;
 
 extern u8 b_attacker;
 extern u8 b_defender;
-// extern u8 b_defender_partner;
+extern u8 b_defender_partner;
 extern u8 b_active_side;
 // extern u16 b_pokemon_team_id_by_side[4];
 // // extern u8 string_buffer_maybe[300];
@@ -37,9 +38,16 @@ extern struct dp08* b_dp08_ptr;
 extern i32 b_move_damage;
 
 extern u8 battle_outcome_A[];
+extern u8 battle_outcome_B[];
+
 extern u8 bo_paralysis[];
 extern u8 bo_poison[];
 extern u8 bo_burn[];
 extern u8 bo_sleep[];
 extern u8 bo_confusion[];
 extern u8 bo_ice[];
+
+extern u8 stat_modification_spec;
+
+extern u8 byte_2023FD4;
+extern u8 byte_2023FD5;

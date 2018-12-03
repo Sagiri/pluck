@@ -64,3 +64,15 @@
 .macro bs_seteffectprimary
 	.byte 0x16
 .endmacro
+
+.macro bs_statbuffchange, param0, param1
+	.byte 0x89
+	.byte param0
+	.word param1
+.endmacro
+
+.macro bs_setbyte, ptr, param1
+	.byte 0x2e
+	.word ptr
+	.byte param1
+.endmacro

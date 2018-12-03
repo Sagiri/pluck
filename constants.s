@@ -34,7 +34,7 @@ EXTRA_BATTLE_STRINGID equ 0x184
 // .definelabel knockoff_move_removeitem_script, 0x081D8F86
 // .definelabel helditem_restorehp_script, 0x081D95EF
 // .definelabel thief_move_steal_script, 0x081D9271
-// .definelabel b_defender_partner, 0x02023D6E
+.definelabel b_defender_partner, 0x02023D6E
 
 // .definelabel parlyz_heal_script, 0x081D9537
 // .definelabel poison_heal_script, 0x081D954F
@@ -43,9 +43,16 @@ EXTRA_BATTLE_STRINGID equ 0x184
 // .definelabel confusion_heal_script, 0x081D95AF
 
 .definelabel battle_outcome_A, 0x02022AB8
+.definelabel battle_outcome_B, 0x02022AC8
+
 .definelabel bo_paralysis, 0x082500A4
 .definelabel bo_poison, 0x08250094
 .definelabel bo_burn, 0x082500AC
 .definelabel bo_sleep, 0x0825009C
 .definelabel bo_confusion, 0x082500BC
 .definelabel bo_ice, 0x082500B4
+
+.definelabel stat_modification_spec, 0x02023FDE
+
+.definelabel byte_2023FD4, 0x02023FD4
+.definelabel byte_2023FD5, 0x02023FD5

@@ -89,6 +89,40 @@ void pluck_flavor_hp(struct battle_datum* attacker, u8 flavor, u8 denominator) {
     pluck_restore_hp(attacker, attacker->max_hp / denominator);
 }
 
+void pluck_boost_stat(u8 bank, u8 stat, i8 num_stages) {
+    struct battle_datum* pokemon = &battle_data[bank];
+
+    if (pokemon->statStages[stat] < 12) {
+        PREPARE_STAT_BUFFER(battle_outcome_A, stat);
+        PREPARE_STRING_BUFFER(battle_outcome_B, stat);
+
+        b_defender_partner = bank;
+        SET_STATCHANGER(stat, num_stages, false);
+        byte_2023FD4 = 0xE + stat;
+        byte_2023FD5 = 0;
+
+        b_movescr_stack_push(b_movescr_cursor);
+        b_movescr_cursor = stat_buff_script;
+    }
+}
+
+void pluck_boost_random_stat(u8 bank) {
+    struct battle_datum* pokemon = &battle_data[bank];
+    u8 stat;
+
+    // confirm that at least one of the five core stats isn't maxed
+    for (stat = STAT_ATK; stat < STAT_ACC; ++stat)
+        if (pokemon->statStages[stat] < 12)
+            break;
+
+    if (stat != STAT_ACC) {
+        // empty body loop
+        while (12 <= pokemon->statStages[STAT_ATK + (stat = umod(rand(), 5))]);
+
+        pluck_boost_stat(bank, stat + STAT_ATK, 2);
+    }
+}
+
 void pluck() {
     struct battle_datum* defender = &battle_data[b_defender];
     struct battle_datum* attacker = &battle_data[b_attacker];
@@ -158,6 +192,18 @@ void pluck() {
             case HOLD_EFFECT_BITTER_HP:
             case HOLD_EFFECT_SOUR_HP:
                 pluck_flavor_hp(attacker, effect - HOLD_EFFECT_SPICY_HP, quality);
+                break;
+
+            case HOLD_EFFECT_ATTACK_UP:
+            case HOLD_EFFECT_DEFENSE_UP:
+            case HOLD_EFFECT_SPEED_UP:
+            case HOLD_EFFECT_SP_ATTACK_UP:
+            case HOLD_EFFECT_SP_DEFENSE_UP:
+                pluck_boost_stat(b_attacker, effect - HOLD_EFFECT_ATTACK_UP + 1, 1);
+                break;
+
+            case HOLD_EFFECT_RANDOM_STAT_UP:
+                pluck_boost_random_stat(b_attacker);
                 break;
         }
 

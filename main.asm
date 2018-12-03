@@ -109,6 +109,13 @@
             bs_setmoveeffect 0x47       // confuses user
             bs_return
 
+        stat_buff_script:
+            bs_playanimation 0x1, 0x7, 0x0
+            bs_statbuffchange 0x41, 0x81D9686
+            bs_setbyte 0x02023E87, 0x4
+            bs_call 0x081D6BD1
+            bs_return
+
         pXateYsZ: .string "\v\h0F ate\n\v\h10's \v\h16!"
     .thumb
 .endarea

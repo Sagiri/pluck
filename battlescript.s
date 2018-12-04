@@ -76,3 +76,9 @@
 	.word ptr
 	.byte param1
 .endmacro
+
+.macro bs_setword, addr, value
+	.byte 0xFA
+	.word addr
+	.word value
+.endmacro

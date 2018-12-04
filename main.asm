@@ -50,6 +50,7 @@
             bs_goto hit_move_script
 
         pluck_move_eat_script:
+            bs_setword extra_battle_string, pXateYsZ
             bs_printstring EXTRA_BATTLE_STRINGID
             bs_waitmessage 0x40
             bs_return

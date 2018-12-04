@@ -229,7 +229,5 @@ void pluck() {
 
         // *(u8*)((u8*)(&b_dp08_ptr->choicedMove[b_defender]) + 0) = 0;
         // *(u8*)((u8*)(&b_dp08_ptr->choicedMove[b_defender]) + 1) = 0;
-
-        extra_battle_string = pXateYsZ;
     }
 }

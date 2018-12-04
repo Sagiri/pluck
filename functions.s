@@ -13,7 +13,7 @@
 .definelabel strcpy_xFF_terminated, 0x08008D84
 
 // .definelabel do_itemeffect, 0x080413C0
-// .definelabel pokemon_getattr, 0x0803FBE8
+.definelabel pokemon_getattr, 0x0803FBE8
 // .definelabel pokemon_setattr, 0x0804037C
 // .definelabel effect_done, 0x080210EC
 // .definelabel item_battle_effects, 0x0801BC68
@@ -43,3 +43,5 @@
 
 .definelabel dislikes_flavor, 0x08044234
 .definelabel rand, 0x08044EC8
+
+.definelabel move_get_pp_info, 0x0804101C

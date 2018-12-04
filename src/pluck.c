@@ -123,6 +123,43 @@ void pluck_boost_random_stat(u8 bank) {
     }
 }
 
+void pluck_restore_pp(u8 bank, u8 pp_boost) {
+    struct battle_datum* datum = &battle_data[bank];
+    struct pokemon* pokemon = &battle_side_get_party_owner(bank)[bank];
+
+    u16 move;
+    u8 pp;
+    u8 pp_max;
+    u8 pp_bonuses;
+
+    for (u32 i = 0; i < 4; ++i) {
+        move = pokemon_getattr(pokemon, REQ_MOVE1 +i, NULL);
+        pp = pokemon_getattr(pokemon, REQ_PP1 +i, NULL);
+        pp_bonuses = pokemon_getattr(pokemon, REQ_PP_BONUSES, NULL);
+        pp_max = move_get_pp_info(move, pp_bonuses, i);
+
+        if (pp < pp_max) {
+            PREPARE_MOVE_BUFFER(battle_outcome_A, move);
+            datum->pp[i] = min(pp_max, pp + pp_boost);
+
+            b_active_side = bank;
+            dp01_build_cmdbuf_x02_a_b_varargs(
+                0,
+                REQ_BTL_PP1 + i,
+                0,
+                sizeof(datum->pp[i]),
+                &datum->pp[i]
+            );
+            dp01_battle_side_mark_buffer_for_execution(bank);
+
+            b_movescr_stack_push(b_movescr_cursor);
+            b_movescr_cursor = pp_restore_script;
+
+            break;
+        }
+    }
+}
+
 void pluck() {
     struct battle_datum* defender = &battle_data[b_defender];
     struct battle_datum* attacker = &battle_data[b_attacker];
@@ -221,6 +258,10 @@ void pluck() {
                 attacker->status2 |= STATUS2_FOCUS_ENERGY;
                 b_movescr_stack_push(b_movescr_cursor);
                 b_movescr_cursor = crit_rate_buff_script;
+                break;
+
+            case HOLD_EFFECT_RESTORE_PP:
+                pluck_restore_pp(b_attacker, quality);
                 break;
         }
 

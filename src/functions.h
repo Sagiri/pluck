@@ -6,14 +6,14 @@ u8 itemid_get_heldeffect(u16 item);
 u8 itemid_get_pocket_number(u16 item);
 u8 itemid_get_quality(u16 itemid);
 
-// // u32 pokemon_getattr(struct pokemon*, u8, void*);
+u32 pokemon_getattr(struct pokemon*, u8, void*);
 // void pokemon_setattr(struct pokemon*, u8, void*);
 
 // // u8 item_battle_effects(u8 caseid, u8 bank, bool moveTurn);
 
 // // // true: opponent
 // // // false: player
-// bool battle_side_get_owner(u8 slot);
+bool battle_side_get_owner(u8 slot);
 
 // // void expand_battle_string(u8* fmt);
 void dp01_battle_side_mark_buffer_for_execution(u8 bank);
@@ -29,3 +29,5 @@ bool dislikes_flavor(u32 personality, u8 flavor);
 u32 umod(u32, u32);
 
 u16 rand();
+
+u8 move_get_pp_info(u16 move, u8 pp_bonuses, u8 id);

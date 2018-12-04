@@ -19,6 +19,7 @@
 #include "locations.h"
 #include "functions.h"
 
+#define battle_side_get_party_owner(bank) (battle_side_get_owner(bank) ? party_opponent : party_player)
 #define min(x, y) ((x < y) ? x : y)
 
 #define PREPARE_FLAVOR_BUFFER(buffer, flavor) PREPARE_SIMPLE_BUFFER(buffer, B_BUFF_NEGATIVE_FLAVOR, flavor)
@@ -37,6 +38,14 @@
     buffer[2] = string;                         \
     buffer[3] = (string & 0xFF00) >> 8;         \
     buffer[4] = B_BUFF_EOS;                     \
+}
+
+#define PREPARE_MOVE_BUFFER(buffer, move) { \
+    buffer[0] = B_BUFF_PLACEHOLDER_BEGIN;   \
+    buffer[1] = B_BUFF_MOVE;                \
+    buffer[2] = move;                       \
+    buffer[3] = (move & 0xFF00) >> 8;       \
+    buffer[4] = B_BUFF_EOS;                 \
 }
 
 #define SET_STATCHANGER(stat, stage, goesDown) (stat_modification_spec = (stat) + (stage << 4) + (goesDown << 7))

@@ -1,6 +1,7 @@
 #pragma once
 
 #define B_BUFF_STRING                   0
+#define B_BUFF_MOVE                     2
 #define B_BUFF_STAT                     5
 #define B_BUFF_NEGATIVE_FLAVOR          8
 

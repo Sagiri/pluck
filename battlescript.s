@@ -82,3 +82,12 @@
 	.word addr
 	.word value
 .endmacro
+
+.macro bs_msgbox, stringid
+	bs_printstring stringid
+	bs_waitmessage 0x40
+.endmacro
+
+.macro bs_playanimation_useitem, bank
+	bs_playanimation bank, 0x7, 0x0
+.endmacro

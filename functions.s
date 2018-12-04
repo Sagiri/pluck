@@ -10,11 +10,10 @@
 
 .definelabel dislikes_flavor, 0x08044234
 .definelabel move_get_pp_info, 0x0804101C
+.definelabel pokemon_getattr, 0x0803FBE8
 
 .definelabel strcpy_xFF_terminated, 0x08008D84
 .definelabel rand, 0x08044EC8
-
-.definelabel pokemon_getattr, 0x0803FBE8
 
 .definelabel __divsi3, 0x081E4018
 .definelabel __aeabi_idiv, __divsi3

@@ -38,5 +38,6 @@ EXTRA_BATTLE_STRINGID equ 0x184
 .definelabel bo_confusion, 0x082500BC
 .definelabel bo_ice, 0x082500B4
 
+.definelabel b_dp08_ptr, 0x02023FE8
 .definelabel byte_2023FD4, 0x02023FD4
 .definelabel byte_2023FD5, 0x02023FD5

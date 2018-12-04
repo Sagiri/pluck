@@ -62,7 +62,8 @@ too_flavorful_script:
 
 stat_buff_script:
     bs_playanimation_useitem 0x1
-    bs_statbuffchange 0x41, 0x081D9686
+    bs_statbuffchange 0x41, stat_buff_script_middle
+stat_buff_script_middle:
     bs_setbyte 0x02023E87, 0x4
     bs_call 0x081D6BD1
     bs_return

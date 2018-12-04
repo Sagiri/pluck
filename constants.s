@@ -29,7 +29,7 @@ EXTRA_BATTLE_STRINGID equ 0x184
 .definelabel battle_outcome_A, 0x02022AB8
 .definelabel battle_outcome_B, 0x02022AC8
 
-.definelabel hit_move_script, 0x081D6900
+.definelabel normal_move_script, 0x081D6900
 .definelabel ability_immunity_script, 0x081D948E
 .definelabel bo_paralysis, 0x082500A4
 .definelabel bo_poison, 0x08250094

@@ -1,6 +1,6 @@
 pluck_move_script:
     bs_setmoveeffect EFFECT_EAT_BERRY
-    bs_goto hit_move_script
+    bs_goto normal_move_script
 
 eat_opponent_berry_script:
     bs_setword extra_battle_string, pXateYsZ

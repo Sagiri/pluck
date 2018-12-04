@@ -42,9 +42,6 @@ struct battle_datum {
     /*0x54*/ u32 otId;
 };
 
-#define MAX_BATTLERS_COUNT  4
-#define PARTY_SIZE 6
-
 struct dp08 {
     u8 _[0xC8];
     u16 choicedMove[MAX_BATTLERS_COUNT];

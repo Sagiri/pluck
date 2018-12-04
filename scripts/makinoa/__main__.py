@@ -3,6 +3,8 @@
 import os, sys, argparse, configparser, shutil, subprocess, fnmatch, itertools
 import os.path
 import kewensis
+from orderedset import OrderedSet
+from collections import OrderedDict
 
 src = "src"
 build = "build"
@@ -28,9 +30,9 @@ except FileNotFoundError:
 free_space = iniparser.get("main", "free-space", fallback="0x08800000")
 optimization_level = iniparser.get("main", "optimization-level", fallback="-O2")
 reserve = iniparser.get("main", "reserve", fallback="0")
-static_objects = set() if "static" not in iniparser else set(iniparser["static"])
-defines = {} if "defines" not in iniparser else dict(iniparser["defines"])
-libgcc = set() if "libgcc" not in iniparser else set(iniparser["libgcc"])
+static_objects = OrderedSet() if "static" not in iniparser else OrderedSet(iniparser["static"])
+defines = OrderedDict() if "defines" not in iniparser else OrderedDict(iniparser["defines"])
+libgcc = OrderedSet() if "libgcc" not in iniparser else OrderedSet(iniparser["libgcc"])
 
 try:
     free_space = int(free_space, 16)
@@ -85,7 +87,7 @@ LDFLAGS = [
     "--relocatable"
 ]
 
-relocatable_objects = set()
+relocatable_objects = OrderedSet()
 
 if os.path.exists(src):
     for srcfile in (path for path in os.listdir(src) if fnmatch.fnmatch(path, "*.c")):

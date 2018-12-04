@@ -2,12 +2,12 @@ pluck_move_script:
     bs_setmoveeffect EFFECT_EAT_BERRY
     bs_goto hit_move_script
 
-pluck_move_eat_script:
+eat_opponent_berry_script:
     bs_setword extra_battle_string, pXateYsZ
     bs_msgbox EXTRA_BATTLE_STRINGID
     bs_return
 
-pluck_heal_hp_script:
+hp_restore_script:
     bs_playanimation_useitem 0x1
     bs_msgbox 0x12A
     bs_orword 0x02023DD0, 0x100

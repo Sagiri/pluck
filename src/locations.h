@@ -7,11 +7,11 @@ extern struct pokemon party_opponent[6];
 extern struct battle_datum battle_data[4];
 
 extern u8 pXateYsZ[];
-extern u8 pluck_move_eat_script[];
+extern u8 eat_opponent_berry_script[];
 extern u8 ability_immunity_script[];
 // extern u8 knockoff_move_removeitem_script[];
 // extern u8 helditem_restorehp_script[];
-extern u8 pluck_heal_hp_script[];
+extern u8 hp_restore_script[];
 extern u8 parlyz_heal_script[];
 extern u8 poison_heal_script[];
 extern u8 burn_heal_script[];

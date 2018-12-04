@@ -6,7 +6,7 @@ void pluck_restore_hp(struct battle_datum* attacker, u8 quality) {
         b_move_damage = attacker->hp - final_hp;
 
         b_movescr_stack_push(b_movescr_cursor);
-        b_movescr_cursor = pluck_heal_hp_script;
+        b_movescr_cursor = hp_restore_script;
     }
 }
 
@@ -266,7 +266,7 @@ void pluck() {
         }
 
         b_movescr_stack_push(b_movescr_cursor);
-        b_movescr_cursor = pluck_move_eat_script;
+        b_movescr_cursor = eat_opponent_berry_script;
 
         // *(u8*)((u8*)(&b_dp08_ptr->choicedMove[b_defender]) + 0) = 0;
         // *(u8*)((u8*)(&b_dp08_ptr->choicedMove[b_defender]) + 1) = 0;

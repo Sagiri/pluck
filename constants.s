@@ -1,6 +1,6 @@
 // .definelabel move_scripts, 0x081D65A8        // vanilla
 .definelabel move_scripts, 0x08903B70           // mrds
-PLUCK_MOVE_SCRIPTID equ 255
+PLUCK_MOVE_SCRIPTID equ 227
 
 .definelabel jpt_80206D8, 0x080206E4
 EFFECT_EAT_BERRY equ 0x3A

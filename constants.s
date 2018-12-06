@@ -1,5 +1,5 @@
-.definelabel move_scripts, 0x081D65A8        // vanilla
-// .definelabel move_scripts, 0x08903B70           // mrds
+// .definelabel move_scripts, 0x081D65A8        // vanilla
+.definelabel move_scripts, 0x08903B70           // mrds
 EFFECT_PLUCK equ 227
 
 // -----------------------------------------------------------------------------

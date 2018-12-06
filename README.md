@@ -8,7 +8,7 @@ Proper implementation of Pluck's (and Bug Bite's) move effect in FR.
 
 If necessary, change `move_scripts` in `constants.s`. If this table hasn't been repointed, changing it won't necessary.
 
-You may need to change `EFFECT_PLUCK` in `constants.s`. This is the move effect that will be assigned to Pluck (and Bug Bite) in move editor, so make sure you go with something otherwise unused.
+You may need to change `EFFECT_PLUCK` in `constants.s`. This is the move effect that will be assigned to Pluck (and Bug Bite) in move editor, so make sure you go with something otherwise unused. Note that if you haven't repointed `move_scripts`, you shouldn't set `EFFECT_PLUCK` above 213.
 
 If you're using the updated Sitrus Berry effect, make sure you uncomment (i.e. remove the `//`) from `#define UPDATED_SITRUSBERRY_EFFECT` in `src/global.h`. To be clear, this will only update the Sitrus Berry effect (to recover 25% HP) in the context of this particular move effect.
 

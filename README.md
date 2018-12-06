@@ -33,6 +33,6 @@ Naturally, do the same for Bug Bite.
 
 The code determines what is and isn't a berry based on the item's pocket. So, if you add custom berries not in the original game, as long as they're assigned to the Berry Pouch, they'll still be recognized and eaten (though they won't have any additional effects unless they reuse the same effect as one of the vanilla berries).
 
-The code has no support for the Simple or Contrary abilities.
+The code has no support for the Simple, Contrary, or Unburden abilities.
 
 The text for `[ATTACKER] ate [DEFENDER]'s [BERRY]!` will not display for Player 2 during a link battle; the textbox will just look empty during the window of time where it would normally be displayed. This seems to be an issue with Jambo's battle string loader hack. To be clear, all other aspects of Pluck's effect (including, for example, healing by Plucking an Oran Berry) work and display properly on both games.

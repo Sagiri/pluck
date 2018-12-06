@@ -29,15 +29,15 @@
     faint_effects_hook:
     @@main:
         ldrb    r0, [r0, #3]
-        cmp     r0, #EFFECT_PAYDAY
-        beq     @@effect_continue
-        cmp     r0, #EFFECT_STEAL_ITEM
-        beq     @@effect_continue
-        cmp     r0, #EFFECT_EAT_BERRY
-        beq     @@effect_continue
+        cmp     r0, #AFTEREFFECT_PAYDAY
+        beq     @@aftereffect_continue
+        cmp     r0, #AFTEREFFECT_STEAL_ITEM
+        beq     @@aftereffect_continue
+        cmp     r0, #AFTEREFFECT_EAT_BERRY
+        beq     @@aftereffect_continue
         ldr r0, =0x08020042 |1
         bx r0
-    @@effect_continue:
+    @@aftereffect_continue:
         ldr r0, =0x08020046 |1
         bx r0
 
@@ -52,7 +52,7 @@
 .org move_scripts + (PLUCK_MOVE_SCRIPTID) *4
 .word pluck_move_script
 
-.org jpt_80206D8 + (EFFECT_EAT_BERRY -7) *4
+.org jpt_80206D8 + (AFTEREFFECT_EAT_BERRY -7) *4
 .word case_eat_berry
 
 .org 0x08020038

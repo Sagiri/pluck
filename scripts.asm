@@ -1,5 +1,5 @@
 pluck_move_script:
-    bs_setmoveeffect EFFECT_EAT_BERRY
+    bs_setmoveeffect AFTEREFFECT_EAT_BERRY
     bs_goto normal_move_script
 
 eat_opponent_berry_script:

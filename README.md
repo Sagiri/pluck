@@ -6,6 +6,8 @@ Proper implementation of Pluck's (and Bug Bite's) move effect in FR.
 
 ### What do I do before I build this?
 
+Insert Jambo's battle string loader and battle script setword hacks to you ROM, if you haven't done so already. Additionally, if you didn't insert setword as command 0xFA, update the `.byte 0xFA` in `bs_setword` in `battlescripts.s`.
+
 If necessary, change `move_scripts` in `constants.s`. If this table hasn't been repointed, changing it won't necessary.
 
 You may need to change `EFFECT_PLUCK` in `constants.s`. This is the move effect that will be assigned to Pluck (and Bug Bite) in move editor, so make sure you go with something otherwise unused. Note that if you haven't repointed `move_scripts`, you shouldn't set `EFFECT_PLUCK` above 213.

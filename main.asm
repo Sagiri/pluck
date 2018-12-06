@@ -49,7 +49,7 @@
     .thumb
 .endarea
 
-.org move_scripts + (PLUCK_MOVE_SCRIPTID) *4
+.org move_scripts + (EFFECT_PLUCK) *4
 .word pluck_move_script
 
 .org jpt_80206D8 + (AFTEREFFECT_EAT_BERRY -7) *4

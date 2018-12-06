@@ -2,12 +2,12 @@
 // .definelabel move_scripts, 0x08903B70           // mrds
 EFFECT_PLUCK equ 227
 
+// -----------------------------------------------------------------------------
+
 .definelabel jpt_80206D8, 0x080206E4
 AFTEREFFECT_EAT_BERRY equ 0x3A
 AFTEREFFECT_STEAL_ITEM equ 0x1F
 AFTEREFFECT_PAYDAY equ 0xB
-
-// -----------------------------------------------------------------------------
 
 .definelabel extra_battle_string, 0x0203C020
 EXTRA_BATTLE_STRINGID equ 0x184

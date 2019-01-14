@@ -8,9 +8,7 @@ Proper implementation of Pluck's (and Bug Bite's) move effect in FR.
 
 Insert Jambo's battle string loader and battle script setword hacks to you ROM, if you haven't done so already. Additionally, if you didn't insert setword as command 0xFA, update the `.byte 0xFA` in `bs_setword` in `battlescripts.s`.
 
-If necessary, change `move_scripts` in `constants.s`. The default address of this table is for MrDollSteak's patch, so if it is there, you will not need to modify this.
-
-You may need to change `EFFECT_PLUCK` in `constants.s`. This is the move effect that will be assigned to Pluck (and Bug Bite) in move editor, so make sure you go with something otherwise unused. Note that if you haven't repointed `move_scripts`, you shouldn't set `EFFECT_PLUCK` above 213.
+You may need to change `EFFECT_PLUCK` in `constants.s`. This is the move effect that will be assigned to Pluck (and Bug Bite) in move editor, so make sure you go with something otherwise unused. Note that if you haven't repointed the table of move effects, you shouldn't set `EFFECT_PLUCK` above 213.
 
 If you're using the updated Sitrus Berry effect, make sure you uncomment (i.e. remove the `//`) from `#define UPDATED_SITRUSBERRY_EFFECT` in `src/global.h`. To be clear, this will only update the Sitrus Berry effect (to recover 25% HP) in the context of this particular move effect.
 

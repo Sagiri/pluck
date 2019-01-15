@@ -1,3 +1,5 @@
+// .definelabel move_scripts, 0x081D65A8        // vanilla
+.definelabel move_scripts, 0x08903B70           // mrds
 EFFECT_PLUCK equ 227
 
 // -----------------------------------------------------------------------------
@@ -41,5 +43,3 @@ EXTRA_BATTLE_STRINGID equ 0x184
 .definelabel b_dp08_ptr, 0x02023FE8
 .definelabel byte_2023FD4, 0x02023FD4
 .definelabel byte_2023FD5, 0x02023FD5
-
-.definelabel move_scripts_ptr, 0x08025CF8
